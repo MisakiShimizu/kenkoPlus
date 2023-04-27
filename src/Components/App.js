@@ -2,6 +2,9 @@ import "../styles/sass/styles.css";
 import React, { useState } from "react";
 import logo from "../styles/sass/assets/Plugin icon - 1 (1).png";
 import SignUp from "../Auth/SignUp";
+
+import Card from "@mui/material/Card";
+import { Button } from "@mui/material";
 function App() {
   const [logIn, setLogIn] = useState(false);
 
@@ -18,16 +21,26 @@ function App() {
         <img src={logo} alt="Kenko plus logo." />
       </header>
       <section className="wrapper">
-        {logIn ? <p>login</p> : <SignUp />}
-        <div className="signContainer">
-          <button onClick={handleSignUp} className="signButton select">
-            Register
-          </button>
-          <p className="lineStyle">or</p>
-          <button onClick={handleLogIn} className="signButton">
-            Log In
-          </button>
-        </div>
+        <Card>
+          {logIn ? <p>login</p> : <SignUp />}
+          <div className="center signContainer">
+            <Button
+              onClick={handleSignUp}
+              variant={logIn ? "text" : "contained"}
+              value="register"
+            >
+              Register
+            </Button>
+            <p className="lineStyle">or</p>
+            <Button
+              onClick={handleLogIn}
+              variant={logIn ? "contained" : "text"}
+              value="logIn"
+            >
+              Log In
+            </Button>
+          </div>
+        </Card>
       </section>
     </div>
   );
