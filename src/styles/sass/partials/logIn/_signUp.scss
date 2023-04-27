@@ -1,8 +1,40 @@
 .logContainer {
-  border: 1px solid black;
-  padding: 5rem 2rem;
+  padding: 2rem 2rem;
 }
 .logContainer form {
   display: flex;
   flex-direction: column;
+}
+.logContainer label {
+  visibility: hidden;
+}
+.logContainer input {
+  position: relative;
+  text-align: center;
+}
+.logIcon {
+  position: absolute;
+  top: 0;
+}
+.signContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signButton {
+  display: inline-block;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 40px;
+  margin: 4px 2px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  color: #04598b;
+}
+.select {
+  background-color: #3a5782;
+  color: white;
 }

@@ -11,3 +11,27 @@ html {
   width: 90%;
   margin: 0 auto;
 }
+.lineStyle {
+  position: relative;
+  text-align: center;
+}
+.lineStyle::before {
+  content: " ";
+  display: block;
+  height: 2px;
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  background: #3a5782;
+}
+.lineStyle::after {
+  content: " ";
+  display: block;
+  height: 2px;
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  background: #3a5782;
+}

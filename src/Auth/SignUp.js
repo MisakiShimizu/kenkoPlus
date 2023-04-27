@@ -8,11 +8,9 @@ export default function SignUp() {
     <div className="logContainer ">
       <form action="">
         <h2>Create Account</h2>
-        <label htmlFor="name">
-          <HiOutlineUser />
-          Your Name
-        </label>
-        <input type="text" id="name" name="name" />
+        <label htmlFor="name">Your Name</label>
+        <HiOutlineUser className="logIcon" />
+        <input type="text" id="name" name="name" placeholder="Your Name" />
         <label htmlFor="email">
           <HiOutlineMail />
           Email
@@ -28,9 +26,6 @@ export default function SignUp() {
           Re-enter Password
         </label>
         <input type="password" name="password2" id="password2" />
-        <button>
-          Sign Up <HiArrowRight />
-        </button>
       </form>
     </div>
   );

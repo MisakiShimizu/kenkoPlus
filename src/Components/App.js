@@ -13,14 +13,21 @@ function App() {
     setLogIn(false);
   };
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="header wrapper">
         <img src={logo} alt="Kenko plus logo." />
       </header>
-      <section>
-        <button onClick={handleSignUp}>Sign Up</button>
-        <button onClick={handleLogIn}>Log In</button>
+      <section className="wrapper">
         {logIn ? <p>login</p> : <SignUp />}
+        <div className="signContainer">
+          <button onClick={handleSignUp} className="signButton select">
+            Register
+          </button>
+          <p className="lineStyle">or</p>
+          <button onClick={handleLogIn} className="signButton">
+            Log In
+          </button>
+        </div>
       </section>
     </div>
   );
