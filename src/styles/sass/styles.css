@@ -255,7 +255,7 @@ html {
   content: " ";
   display: block;
   height: 2px;
-  width: 80px;
+  width: 6rem;
   position: absolute;
   top: 50%;
   right: 40px;
@@ -266,7 +266,7 @@ html {
   content: " ";
   display: block;
   height: 2px;
-  width: 80px;
+  width: 6rem;
   position: absolute;
   top: 50%;
   left: 40px;
