@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
   FormControl,
+  Button,
 } from "@mui/material";
-import { HiOutlineMail, HiOutlineUser, HiArrowRight } from "react-icons/hi";
+import { useAuth } from "../../Context/AuthContext";
+import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-export default function SignUp({ logIn }) {
+export default function SignUp({ logIn, setLogIn }) {
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
+
+  const handleLogIn = () => {
+    setLogIn(true);
+  };
+
+  const handleSignUp = () => {
+    setLogIn(false);
+  };
   const handleFormTitle = () => {
     if (logIn === true) {
       return "Welcome back!";
@@ -17,6 +32,10 @@ export default function SignUp({ logIn }) {
     }
   };
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    signup(emailRef.current.value, passwordRef.current.value);
+  }
   return (
     <div className="logContainer ">
       <form action="">
@@ -33,6 +52,8 @@ export default function SignUp({ logIn }) {
               id="name"
               type="text"
               placeholder="Your Name"
+              required
+              inputRef={nameRef}
               startAdornment={
                 <InputAdornment position="start">
                   <HiOutlineUser />
@@ -52,6 +73,8 @@ export default function SignUp({ logIn }) {
             id="email"
             type="email"
             placeholder="Your Email"
+            required
+            inputRef={emailRef}
             startAdornment={
               <InputAdornment position="start">
                 <HiOutlineMail />
@@ -69,6 +92,8 @@ export default function SignUp({ logIn }) {
             id="password"
             type="password"
             placeholder="Password"
+            required
+            inputRef={passwordRef}
             startAdornment={
               <InputAdornment position="start">
                 <RiLockPasswordLine />
@@ -81,11 +106,15 @@ export default function SignUp({ logIn }) {
           variant="filled"
           style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
         >
-          <InputLabel htmlFor="password2">Re-enter Your Password</InputLabel>
+          <InputLabel htmlFor="passwordConfirm">
+            Re-enter Your Password
+          </InputLabel>
           <OutlinedInput
-            id="password2"
+            id="passwordConfirm"
             type="password"
             placeholder="Re-enter Password"
+            required
+            inputRef={passwordConfirmRef}
             startAdornment={
               <InputAdornment position="start">
                 <RiLockPasswordLine />
@@ -93,17 +122,24 @@ export default function SignUp({ logIn }) {
             }
           ></OutlinedInput>
         </FormControl>
-        {/* 
-        <label htmlFor="password">
-          <RiLockPasswordLine />
-          Password
-        </label>
-        <input type="password" name="password" id="password" />
-        <label htmlFor="password2">
-          <RiLockPasswordLine />
-          Re-enter Password
-        </label>
-        <input type="password" name="password2" id="password2" /> */}
+
+        <div className="center signContainer wrapper">
+          <Button
+            onClick={handleSignUp}
+            variant={logIn ? "text" : "contained"}
+            value="register"
+          >
+            Register
+          </Button>
+          <p className="lineStyle">or</p>
+          <Button
+            onClick={handleLogIn}
+            variant={logIn ? "contained" : "text"}
+            value="logIn"
+          >
+            Log In
+          </Button>
+        </div>
       </form>
     </div>
   );
