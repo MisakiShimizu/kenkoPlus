@@ -20,14 +20,16 @@ function App() {
         <img src={logo} alt="Kenko plus logo." />
       </header>
       <section className="wrapper">
-        <Card>
-          {logIn ? <p>login</p> : <SignUp />}
+        <Card
+          style={{ backgroundColor: "rgba(237, 242, 251, 0.5)" }}
+          sx={{ borderRadius: "20px" }}
+        >
+          {logIn ? <SignUp logIn={true} /> : <SignUp logIn={false} />}
           <div className="center signContainer wrapper">
             <Button
               onClick={handleSignUp}
               variant={logIn ? "text" : "contained"}
               value="register"
-              fullWidth
             >
               Register
             </Button>
@@ -36,7 +38,6 @@ function App() {
               onClick={handleLogIn}
               variant={logIn ? "contained" : "text"}
               value="logIn"
-              fullWidth
             >
               Log In
             </Button>
