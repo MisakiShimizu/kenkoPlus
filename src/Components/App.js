@@ -5,6 +5,7 @@ import SignUp from "./Auth/SignUp";
 
 import { Card } from "@mui/material";
 import { AuthProvider } from "../Context/AuthContext";
+
 function App() {
   const [logIn, setLogIn] = useState(false);
 

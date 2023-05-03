@@ -6,15 +6,17 @@ const AuthContext = React.createContext();
 export function useAuth() {
   return useContext(AuthContext);
 }
+
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
 
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  function signup(name, email, password) {
+    console.log(name, email, password);
+    return auth.createUserWithEmailAndPassword(name, email, password);
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChange((user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
     return unsubscribe;

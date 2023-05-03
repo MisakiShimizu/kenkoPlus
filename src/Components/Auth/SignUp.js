@@ -1,67 +1,80 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
   FormControl,
   Button,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
 import { useAuth } from "../../Context/AuthContext";
 import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-export default function SignUp({ logIn, setLogIn }) {
+export default function SignUp() {
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogIn = () => {
-    setLogIn(true);
-  };
-
-  const handleSignUp = () => {
-    setLogIn(false);
-  };
-  const handleFormTitle = () => {
-    if (logIn === true) {
-      return "Welcome back!";
-    } else {
-      return "Create Account";
-    }
-  };
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    signup(emailRef.current.value, passwordRef.current.value);
+
+    console.log(error);
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(
+        nameRef.current.value,
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+    } catch {
+      setError("Failed to create an account");
+    }
+    setLoading(false);
   }
   return (
     <div className="logContainer ">
-      <form action="">
-        <h2>{handleFormTitle()}</h2>
-        {logIn !== true && (
-          <FormControl
-            variant="standard"
-            sx={{ m: 1, width: "25ch" }}
-            style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
-          >
-            <InputLabel htmlFor="name">Your Name</InputLabel>
+      {JSON.stringify(currentUser)}
+      {error && (
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          {error}
+        </Alert>
+      )}
+      <form action="" onSubmit={handleSubmit}>
+        <h2>Hello 👋</h2>
+        <h3>Please sign up below</h3>
 
-            <OutlinedInput
-              id="name"
-              type="text"
-              placeholder="Your Name"
-              required
-              inputRef={nameRef}
-              startAdornment={
-                <InputAdornment position="start">
-                  <HiOutlineUser />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
-        )}
+        <FormControl
+          variant="standard"
+          sx={{ m: 1, width: "25ch" }}
+          style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
+        >
+          <InputLabel htmlFor="name">Your Name</InputLabel>
+
+          <OutlinedInput
+            id="name"
+            type="text"
+            placeholder="Your Name"
+            required
+            inputRef={nameRef}
+            startAdornment={
+              <InputAdornment position="start">
+                <HiOutlineUser />
+              </InputAdornment>
+            }
+          ></OutlinedInput>
+        </FormControl>
 
         <FormControl
           sx={{ m: 1, width: "25ch" }}
@@ -125,22 +138,26 @@ export default function SignUp({ logIn, setLogIn }) {
 
         <div className="center signContainer wrapper">
           <Button
-            onClick={handleSignUp}
-            variant={logIn ? "text" : "contained"}
+            disabled={loading}
+            type="submit"
+            variant="contained"
             value="register"
           >
             Register
           </Button>
-          <p className="lineStyle">or</p>
+          {/* <p className="lineStyle">or</p>
           <Button
             onClick={handleLogIn}
             variant={logIn ? "contained" : "text"}
             value="logIn"
           >
             Log In
-          </Button>
+          </Button> */}
         </div>
       </form>
+      <p className="loginQ">
+        Already have an account? <a href="#">Login here</a>
+      </p>
     </div>
   );
 }
