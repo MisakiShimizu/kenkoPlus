@@ -38,7 +38,7 @@ export default function SignUp() {
         passwordRef.current.value
       );
     } catch {
-      setError("Failed to create an account");
+      // setError("Failed to create an account");
     }
     setLoading(false);
   }
