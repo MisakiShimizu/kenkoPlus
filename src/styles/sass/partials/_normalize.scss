@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom left, #caf0f8 26%, #0096c7 92%);
+}
+html {
+  font-size: 125%;
+  line-height: 1.6;
+}
+.app {
+  background-color: rgba(237, 242, 251, 0.5);
+}
+.wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.lineStyle {
+  position: relative;
+  text-align: center;
+}
+.lineStyle::before {
+  content: " ";
+  display: block;
+  height: 2px;
+  width: 6rem;
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  background: #3a5782;
+}
+.lineStyle::after {
+  content: " ";
+  display: block;
+  height: 2px;
+  width: 6rem;
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  background: #3a5782;
+}

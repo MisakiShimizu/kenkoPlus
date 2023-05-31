@@ -3,11 +3,9 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
 body {
   margin: 0;
 }
-
 article,
 aside,
 details,
@@ -22,7 +20,6 @@ section,
 summary {
   display: block;
 }
-
 audio,
 canvas,
 progress,
@@ -30,52 +27,41 @@ video {
   display: inline-block;
   vertical-align: baseline;
 }
-
 audio:not([controls]) {
   display: none;
   height: 0;
 }
-
 [hidden],
 template {
   display: none;
 }
-
 a {
   background: 0 0;
 }
-
 a:active,
 a:hover {
   outline: 0;
 }
-
 abbr[title] {
   border-bottom: 1px dotted;
 }
-
 b,
 strong {
   font-weight: 700;
 }
-
 dfn {
   font-style: italic;
 }
-
 h1 {
   font-size: 2em;
 }
-
 mark {
   background: #ff0;
   color: #000;
 }
-
 small {
   font-size: 80%;
 }
-
 sub,
 sup {
   font-size: 75%;
@@ -83,15 +69,12 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-
 sup {
   top: -0.5em;
 }
-
 sub {
   bottom: -0.25em;
 }
-
 a,
 h1,
 h2,
@@ -103,28 +86,23 @@ p {
   margin: 0;
   padding: 0;
 }
-
 img {
   border: 0;
 }
-
 svg:not(:root) {
   overflow: hidden;
 }
-
 figure {
   margin: 1em 40px;
 }
-
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
-
 pre {
   overflow: auto;
 }
-
 code,
 kbd,
 pre,
@@ -132,7 +110,6 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-
 button,
 input,
 optgroup,
@@ -142,179 +119,71 @@ textarea {
   font: inherit;
   margin: 0;
 }
-
 button {
   overflow: visible;
 }
-
 button,
 select {
   text-transform: none;
 }
-
 button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
-
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
-
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-
 input {
   line-height: normal;
 }
-
-input[type=checkbox],
-input[type=radio] {
+input[type="checkbox"],
+input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-
-input[type=search] {
+input[type="search"] {
   -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
-
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
-
 legend {
   border: 0;
   padding: 0;
 }
-
 textarea {
   overflow: auto;
 }
-
 optgroup {
   font-weight: 700;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 td,
 th {
   padding: 0;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom left, #caf0f8 26%, #0096c7 92%);
-}
-
-html {
-  font-size: 125%;
-  line-height: 1.6;
-}
-
-.app {
-  background-color: rgba(237, 242, 251, 0.5);
-}
-
-.wrapper {
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-}
-
-.lineStyle {
-  position: relative;
-  text-align: center;
-}
-
-.lineStyle::before {
-  content: " ";
-  display: block;
-  height: 2px;
-  width: 6rem;
-  position: absolute;
-  top: 50%;
-  right: 40px;
-  background: #3a5782;
-}
-
-.lineStyle::after {
-  content: " ";
-  display: block;
-  height: 2px;
-  width: 6rem;
-  position: absolute;
-  top: 50%;
-  left: 40px;
-  background: #3a5782;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  padding-top: 50px;
-}
-
-.logContainer {
-  padding: 2rem 2rem;
-}
-
-.logContainer form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.logContainer label {
-  visibility: hidden;
-}
-
-.logContainer input {
-  position: relative;
-  text-align: center;
-}
-
-.logIcon {
-  position: absolute;
-  top: 0;
-}
-
-.signContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px 0;
-}
-
-.signButton {
-  text-align: center;
 }

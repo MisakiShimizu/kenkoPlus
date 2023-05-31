@@ -1,0 +1,32 @@
+.logContainer {
+  padding: 2rem 2rem;
+}
+.logContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logContainer label {
+  visibility: hidden;
+}
+.logContainer input {
+  position: relative;
+  text-align: center;
+}
+.logIcon {
+  position: absolute;
+  top: 0;
+}
+.signContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+}
+
+.signButton {
+  text-align: center;
+}
+.loginQ {
+  text-align: right;
+}
