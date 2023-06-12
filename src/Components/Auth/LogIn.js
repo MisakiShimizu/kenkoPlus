@@ -15,7 +15,6 @@ import {
 import { auth, registerWithEmailAndPassword } from "../../firebase";
 import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { ValidateEmail, ValidatePassword } from "../../reuseCode";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -48,25 +47,17 @@ export default function SignUp() {
   //   // }
   //   setLoading(false);
   // }
-  const signUp = () => {
-    if (!nameRef.current.value) alert("Please enter name");
-    ValidateEmail(emailRef);
-    ValidatePassword(passwordRef);
-    if (
-      nameRef.current.value &&
-      emailRef.current.value &&
-      passwordRef.current.value
-    )
+  const logIn = () => {
+    if (emailRef.current.value && passwordRef.current.value)
       registerWithEmailAndPassword(
         nameRef.current.value,
         emailRef.current.value,
         passwordRef.current.value
       );
   };
-
   useEffect(() => {
     if (loading) return;
-    if (user) <navigate to="/dashboard" replace={true} />;
+    if (user) navigate.replace("/App");
   }, [user, loading]);
   return (
     <div className="logContainer wrapper ">
@@ -82,27 +73,8 @@ export default function SignUp() {
           </Alert>
         )}
         <div>
-          <h2>Hello 👋</h2>
-          <h3>Please sign up below</h3>
-
-          <FormControl
-            variant="standard"
-            sx={{ m: 1, width: "25ch" }}
-            style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
-          >
-            <OutlinedInput
-              id="name"
-              type="text"
-              placeholder="Your Name"
-              required
-              inputRef={nameRef}
-              startAdornment={
-                <InputAdornment position="start">
-                  <HiOutlineUser />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
+          <h2>Welcome Back 👋</h2>
+          <h3>Please login below</h3>
 
           <FormControl
             sx={{ m: 1, width: "25ch" }}
@@ -140,24 +112,6 @@ export default function SignUp() {
               }
             ></OutlinedInput>
           </FormControl>
-          <FormControl
-            sx={{ m: 1, width: "25ch" }}
-            variant="filled"
-            style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
-          >
-            <OutlinedInput
-              id="passwordConfirm"
-              type="password"
-              placeholder="Re-enter Password"
-              required
-              inputRef={passwordConfirmRef}
-              startAdornment={
-                <InputAdornment position="start">
-                  <RiLockPasswordLine />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
 
           <div className="center signContainer wrapper">
             <Button
@@ -165,14 +119,15 @@ export default function SignUp() {
               type="submit"
               variant="contained"
               value="register"
-              onClick={signUp}
+              onClick={logIn}
             >
               Register
             </Button>
           </div>
         </div>
         <p className="loginQ">
-          Already have an account? <NavLink to="./LogIn.js">Login Here</NavLink>
+          Don't have an account?{" "}
+          <NavLink to="./SignUp.js">Create one now!</NavLink>
         </p>
       </Card>
     </div>
