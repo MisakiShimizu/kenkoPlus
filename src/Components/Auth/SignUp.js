@@ -27,27 +27,6 @@ export default function SignUp() {
   // const { signup, currentUser } = useAuth();
   const [user, loading, error] = useAuthState(auth);
 
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   console.log(error);
-  //   if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-  //     return setError("Passwords do not match");
-  //   }
-
-  //   // try {
-  //   //   setError("");
-  //   //   setLoading(true);
-  //   //   // await signup(
-  //   //   //   nameRef.current.value,
-  //   //   //   emailRef.current.value,
-  //   //   //   passwordRef.current.value
-  //   //   // );
-  //   // } catch {
-  //   //   // setError("Failed to create an account");
-  //   // }
-  //   setLoading(false);
-  // }
   const signUp = () => {
     if (!nameRef.current.value) alert("Please enter name");
     ValidateEmail(emailRef);
