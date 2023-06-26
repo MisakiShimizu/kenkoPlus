@@ -151,7 +151,7 @@ export default function SignUp() {
           </div>
         </div>
         <p className="loginQ">
-          Already have an account? <NavLink to="./LogIn.js">Login Here</NavLink>
+          Already have an account? <NavLink to="/login">Login Here</NavLink>
         </p>
       </Card>
     </div>

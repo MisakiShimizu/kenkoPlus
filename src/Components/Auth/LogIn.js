@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from "react";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { ValidateEmail, ValidatePassword } from "../../reuseCode";
+import { auth, logInWithEmailAndPassword } from "../../firebase";
 import {
   Card,
   InputAdornment,
@@ -12,52 +14,28 @@ import {
   Alert,
   AlertTitle,
 } from "@mui/material";
-import { auth, registerWithEmailAndPassword } from "../../firebase";
 import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-export default function SignUp() {
+export default function LogIn() {
   const navigate = useNavigate();
 
-  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
+
   // const { signup, currentUser } = useAuth();
   const [user, loading, error] = useAuthState(auth);
 
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   console.log(error);
-  //   if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-  //     return setError("Passwords do not match");
-  //   }
-
-  //   // try {
-  //   //   setError("");
-  //   //   setLoading(true);
-  //   //   // await signup(
-  //   //   //   nameRef.current.value,
-  //   //   //   emailRef.current.value,
-  //   //   //   passwordRef.current.value
-  //   //   // );
-  //   // } catch {
-  //   //   // setError("Failed to create an account");
-  //   // }
-  //   setLoading(false);
-  // }
-  const logIn = () => {
-    if (emailRef.current.value && passwordRef.current.value)
-      registerWithEmailAndPassword(
-        nameRef.current.value,
-        emailRef.current.value,
-        passwordRef.current.value
-      );
+  const logIn = (e) => {
+    e.preventDefault();
+    ValidateEmail(emailRef);
+    ValidatePassword(passwordRef);
+    logInWithEmailAndPassword(emailRef, passwordRef);
   };
+
   useEffect(() => {
     if (loading) return;
-    if (user) navigate.replace("/App");
+    if (user) <navigate to="/home" replace={true} />;
   }, [user, loading]);
   return (
     <div className="logContainer wrapper ">
@@ -74,7 +52,7 @@ export default function SignUp() {
         )}
         <div>
           <h2>Welcome Back 👋</h2>
-          <h3>Please login below</h3>
+          <h3>Please sign in below</h3>
 
           <FormControl
             sx={{ m: 1, width: "25ch" }}
@@ -118,16 +96,15 @@ export default function SignUp() {
               disabled={loading}
               type="submit"
               variant="contained"
-              value="register"
+              value="login"
               onClick={logIn}
             >
-              Register
+              Login
             </Button>
           </div>
         </div>
         <p className="loginQ">
-          Don't have an account?{" "}
-          <NavLink to="./SignUp.js">Create one now!</NavLink>
+          Don't have an account? <NavLink to="/signup">Sign Up Here</NavLink>
         </p>
       </Card>
     </div>
