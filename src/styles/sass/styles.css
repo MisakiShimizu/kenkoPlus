@@ -246,6 +246,14 @@ html {
   margin: 0 auto;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -276,4 +284,20 @@ html {
   top: 50%;
   left: 40px;
   background: #3a5782;
+}
+
+.headerContainer,
+.header {
+  display: flex;
+  flex-direction: column;
+  align-self: space-between;
+}
+
+.logo {
+  border: none;
+  background: transparent;
+}
+
+.header {
+  width: 40%;
 }

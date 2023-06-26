@@ -1,28 +1,40 @@
 import logo from "../styles/sass/assets/Plugin icon - 1 (1).png";
-import {
-  AppBar,
-  Box,
-  Container,
-  Toolbar,
-  //   IconButton,
-  Menu,
-  //   Avatar,
-  //   Button,
-  //   MenuItem,
-} from "@mui/material";
+
+import { Link, useLocation } from "react-router-dom";
+import { Toolbar } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export default function Header() {
+  let location = useLocation();
+  const [signLink, setSignLink] = useState();
+
+  // handles display of signin/login state
+  useEffect(() => {
+    if (window.location.pathname === "/home") {
+      return setSignLink(
+        <ul className="header">
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/login">Log In</Link>
+          </li>
+        </ul>
+      );
+    } else {
+      setSignLink(<></>);
+    }
+  }, [location]);
   return (
-    <div
-    // position="static"
-    // style={{ background: "rgba(237, 242, 251, 0.5)" }}
-    >
-      <Toolbar disableGutters>
-        <img src={logo} alt="Kenko plus logo." />
+    <div className="wrapper">
+      <Toolbar disableGutters className="headerContainer">
+        <Link to="/home">
+          <button className="logo">
+            <img src={logo} alt="Kenko plus logo." />
+          </button>
+        </Link>
+        {signLink}
       </Toolbar>
     </div>
-    // <header className="header wrapper">
-    //   <img src={logo} alt="Kenko plus logo." />
-    // </header>
   );
 }
