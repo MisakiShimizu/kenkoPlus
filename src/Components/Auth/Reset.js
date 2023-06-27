@@ -27,7 +27,7 @@ export default function Reset() {
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/");
-  }, [user, loading]);
+  }, [user, loading, navigate]);
   return (
     <div>
       <Card

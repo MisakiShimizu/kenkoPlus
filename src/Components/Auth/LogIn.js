@@ -37,7 +37,7 @@ export default function LogIn() {
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/dashboard");
-  }, [user, loading]);
+  }, [user, loading, navigate]);
 
   return (
     <div className="logContainer wrapper ">

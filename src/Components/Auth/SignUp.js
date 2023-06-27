@@ -5,7 +5,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import {
   Card,
   InputAdornment,
-  InputLabel,
   OutlinedInput,
   FormControl,
   Button,
@@ -46,8 +45,8 @@ export default function SignUp() {
 
   useEffect(() => {
     if (loading) return;
-    if (user) <navigate to="/dashboard" replace={true} />;
-  }, [user, loading]);
+    if (user) navigate("/dashboard");
+  }, [user, loading, navigate]);
   return (
     <div className="logContainer wrapper ">
       <Header />
