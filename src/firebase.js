@@ -9,10 +9,10 @@ import {
 } from "firebase/auth";
 import {
   getFirestore,
-  query,
-  getDocs,
+  // query,
+  // getDocs,
   collection,
-  where,
+  // where,
   addDoc,
 } from "firebase/firestore";
 
@@ -33,7 +33,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const googleProvider = new GoogleAuthProvider();
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);

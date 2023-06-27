@@ -1,13 +1,13 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../firebase";
-import { query, collection, getDocs, where } from "firebase/firestore";
+// import { query, collection, getDocs, where } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
-  console.log(user);
+  console.log(user, setName);
   //   const fetchUserName = async () => {
   //     try {
   //       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -23,7 +23,7 @@ export default function Dashboard() {
     if (loading) return;
     if (!user) return navigate("/");
     // fetchUserName();
-  }, [user, loading]);
+  }, [user, loading, navigate]);
   return (
     <div className="dashboard">
       <div className="dashboard__container">
