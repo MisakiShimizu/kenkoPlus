@@ -3,18 +3,17 @@ import Header from "../Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ValidateEmail, ValidatePassword } from "../../reuseCode";
-import { auth, logInWithEmailAndPassword } from "../../firebase";
+import { auth, logInWithEmailAndPassword, logout } from "../../firebase";
 import {
   Card,
   InputAdornment,
-  InputLabel,
   OutlinedInput,
   FormControl,
   Button,
   Alert,
   AlertTitle,
 } from "@mui/material";
-import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
+import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 export default function LogIn() {
@@ -25,18 +24,21 @@ export default function LogIn() {
 
   // const { signup, currentUser } = useAuth();
   const [user, loading, error] = useAuthState(auth);
-
+  console.log(user);
   const logIn = (e) => {
     e.preventDefault();
-    ValidateEmail(emailRef);
-    ValidatePassword(passwordRef);
-    logInWithEmailAndPassword(emailRef, passwordRef);
+    ValidateEmail(emailRef.current.value);
+    ValidatePassword(passwordRef.current.value);
+    logInWithEmailAndPassword(
+      emailRef.current.value,
+      passwordRef.current.value
+    );
   };
-
   useEffect(() => {
     if (loading) return;
-    if (user) <navigate to="/home" replace={true} />;
+    if (user) navigate("/dashboard");
   }, [user, loading]);
+
   return (
     <div className="logContainer wrapper ">
       <Header />
@@ -95,7 +97,6 @@ export default function LogIn() {
           <div className="center signContainer wrapper">
             <Button
               disabled={loading}
-              type="submit"
               variant="contained"
               value="login"
               onClick={logIn}
@@ -103,10 +104,12 @@ export default function LogIn() {
               Login
             </Button>
           </div>
+          <NavLink to="/reset">Forgot Passord?</NavLink>
         </div>
         <p className="loginQ">
           Don't have an account? <NavLink to="/signup">Sign Up Here</NavLink>
         </p>
+        <button onClick={logout}>Logout</button>
       </Card>
     </div>
   );

@@ -1,29 +1,24 @@
 import "../styles/sass/styles.css";
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Container } from "@mui/material";
 
 import Home from "./Home";
 import SignUp from "./Auth/SignUp";
 import LogIn from "./Auth/LogIn";
-import Header from "./Header";
-
-// import { AuthProvider } from "../Context/AuthContext";
+import Reset from "./Auth/Reset";
+import Dashboard from "./Dashboard";
 
 function App() {
-  const [logIn, setLogIn] = useState(false);
-
   return (
     <Router>
       <div className="app">
-        {/* <Container style={{ background: "rgba(237, 242, 251, 0.5)" }}> */}
-
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/login" element={<LogIn />} />
+          <Route exact path="/reset" element={<Reset />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
-        {/* </Container> */}
       </div>
     </Router>
   );

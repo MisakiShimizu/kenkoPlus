@@ -30,8 +30,8 @@ export default function SignUp() {
 
   const signUp = () => {
     if (!nameRef.current.value) alert("Please enter name");
-    ValidateEmail(emailRef);
-    ValidatePassword(passwordRef);
+    ValidateEmail(emailRef.current.value);
+    ValidatePassword(passwordRef.current.value);
     if (
       nameRef.current.value &&
       emailRef.current.value &&

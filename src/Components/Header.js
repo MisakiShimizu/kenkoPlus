@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function Header() {
   let location = useLocation();
   const [signLink, setSignLink] = useState();
-  console.log(window.location.pathname);
+
   // handles display of signin/login state
   useEffect(() => {
     if (window.location.pathname === "/") {

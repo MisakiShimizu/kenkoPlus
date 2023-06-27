@@ -37,6 +37,7 @@ const googleProvider = new GoogleAuthProvider();
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    console.log(email, password);
   } catch (err) {
     console.log(err);
     alert(err.message);
