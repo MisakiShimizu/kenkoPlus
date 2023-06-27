@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
+import Header from "../Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ValidateEmail, ValidatePassword } from "../../reuseCode";
@@ -39,6 +39,7 @@ export default function LogIn() {
   }, [user, loading]);
   return (
     <div className="logContainer wrapper ">
+      <Header />
       <Card
         style={{ backgroundColor: "rgba(237, 242, 251, 0.5)" }}
         sx={{ borderRadius: "20px" }}

@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 export default function Header() {
   let location = useLocation();
   const [signLink, setSignLink] = useState();
-
+  console.log(window.location.pathname);
   // handles display of signin/login state
   useEffect(() => {
-    if (window.location.pathname === "/home") {
+    if (window.location.pathname === "/") {
       return setSignLink(
         <ul className="header">
           <li>
@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <div className="wrapper">
       <Toolbar disableGutters className="headerContainer">
-        <Link to="/home">
+        <Link to="/">
           <button className="logo">
             <img src={logo} alt="Kenko plus logo." />
           </button>

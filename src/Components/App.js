@@ -17,10 +17,9 @@ function App() {
     <Router>
       <div className="app">
         {/* <Container style={{ background: "rgba(237, 242, 251, 0.5)" }}> */}
-        <Header />
 
         <Routes>
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/login" element={<LogIn />} />
         </Routes>

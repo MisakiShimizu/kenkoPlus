@@ -16,6 +16,7 @@ import { auth, registerWithEmailAndPassword } from "../../firebase";
 import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { ValidateEmail, ValidatePassword } from "../../reuseCode";
+import Header from "../Header";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ export default function SignUp() {
   }, [user, loading]);
   return (
     <div className="logContainer wrapper ">
+      <Header />
       <Card
         style={{ backgroundColor: "rgba(237, 242, 251, 0.5)" }}
         sx={{ borderRadius: "20px" }}
