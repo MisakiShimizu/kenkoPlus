@@ -228,7 +228,6 @@ th {
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom left, #caf0f8 26%, #0096c7 92%);
 }
 
 html {
@@ -237,6 +236,7 @@ html {
 }
 
 .app {
+  height: 100vh;
   background-color: rgba(237, 242, 251, 0.5);
 }
 
@@ -244,6 +244,14 @@ html {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .center {
@@ -278,43 +286,18 @@ html {
   background: #3a5782;
 }
 
+.headerContainer,
 .header {
   display: flex;
-  justify-content: center;
-  padding-top: 50px;
-}
-
-.logContainer {
-  padding: 2rem 2rem;
-}
-
-.logContainer form {
-  display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: space-between;
 }
 
-.logContainer label {
-  visibility: hidden;
+.logo {
+  border: none;
+  background: transparent;
 }
 
-.logContainer input {
-  position: relative;
-  text-align: center;
-}
-
-.logIcon {
-  position: absolute;
-  top: 0;
-}
-
-.signContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px 0;
-}
-
-.signButton {
-  text-align: center;
+.header {
+  width: 40%;
 }

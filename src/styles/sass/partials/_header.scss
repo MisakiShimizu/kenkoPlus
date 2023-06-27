@@ -1,5 +1,13 @@
+.headerContainer,
 .header {
   display: flex;
-  justify-content: center;
-  padding-top: 50px;
+  flex-direction: column;
+  align-self: space-between;
+}
+.logo {
+  border: none;
+  background: transparent;
+}
+.header {
+  width: 40%;
 }

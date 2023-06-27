@@ -1,30 +1,26 @@
 import "../styles/sass/styles.css";
-import React, { useState } from "react";
-import logo from "../styles/sass/assets/Plugin icon - 1 (1).png";
-import SignUp from "./Auth/SignUp";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { Card } from "@mui/material";
-import { AuthProvider } from "../Context/AuthContext";
+import Home from "./Home";
+import SignUp from "./Auth/SignUp";
+import LogIn from "./Auth/LogIn";
+import Reset from "./Auth/Reset";
+import Dashboard from "./Dashboard";
 
 function App() {
-  const [logIn, setLogIn] = useState(false);
-
   return (
-    <AuthProvider>
+    <Router>
       <div className="app">
-        <header className="header wrapper">
-          <img src={logo} alt="Kenko plus logo." />
-        </header>
-        <section className="wrapper">
-          <Card
-            style={{ backgroundColor: "rgba(237, 242, 251, 0.5)" }}
-            sx={{ borderRadius: "20px" }}
-          >
-            <SignUp logIn={logIn} setLogIn={setLogIn} />
-          </Card>
-        </section>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/login" element={<LogIn />} />
+          <Route exact path="/reset" element={<Reset />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
+        </Routes>
       </div>
-    </AuthProvider>
+    </Router>
   );
 }
 

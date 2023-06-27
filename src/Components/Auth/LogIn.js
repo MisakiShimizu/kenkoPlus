@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
-
+import Header from "../Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { ValidateEmail, ValidatePassword } from "../../reuseCode";
+import { auth, logInWithEmailAndPassword, logout } from "../../firebase";
 import {
   Card,
   InputAdornment,
@@ -11,42 +13,32 @@ import {
   Alert,
   AlertTitle,
 } from "@mui/material";
-import { auth, registerWithEmailAndPassword } from "../../firebase";
-import { HiOutlineMail, HiOutlineUser } from "react-icons/hi";
+import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { ValidateEmail, ValidatePassword } from "../../reuseCode";
-import Header from "../Header";
 
-export default function SignUp() {
+export default function LogIn() {
   const navigate = useNavigate();
 
-  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
+
   // const { signup, currentUser } = useAuth();
   const [user, loading, error] = useAuthState(auth);
-
-  const signUp = () => {
-    if (!nameRef.current.value) alert("Please enter name");
+  console.log(user);
+  const logIn = (e) => {
+    e.preventDefault();
     ValidateEmail(emailRef.current.value);
     ValidatePassword(passwordRef.current.value);
-    if (
-      nameRef.current.value &&
-      emailRef.current.value &&
+    logInWithEmailAndPassword(
+      emailRef.current.value,
       passwordRef.current.value
-    )
-      registerWithEmailAndPassword(
-        nameRef.current.value,
-        emailRef.current.value,
-        passwordRef.current.value
-      );
+    );
   };
-
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/dashboard");
   }, [user, loading, navigate]);
+
   return (
     <div className="logContainer wrapper ">
       <Header />
@@ -62,27 +54,8 @@ export default function SignUp() {
           </Alert>
         )}
         <div>
-          <h2>Hello 👋</h2>
-          <h3>Please sign up below</h3>
-
-          <FormControl
-            variant="standard"
-            sx={{ m: 1, width: "25ch" }}
-            style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
-          >
-            <OutlinedInput
-              id="name"
-              type="text"
-              placeholder="Your Name"
-              required
-              inputRef={nameRef}
-              startAdornment={
-                <InputAdornment position="start">
-                  <HiOutlineUser />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
+          <h2>Welcome Back 👋</h2>
+          <h3>Please sign in below</h3>
 
           <FormControl
             sx={{ m: 1, width: "25ch" }}
@@ -120,40 +93,23 @@ export default function SignUp() {
               }
             ></OutlinedInput>
           </FormControl>
-          <FormControl
-            sx={{ m: 1, width: "25ch" }}
-            variant="filled"
-            style={{ backgroundColor: "rgba(237, 242, 251, 0.7)" }}
-          >
-            <OutlinedInput
-              id="passwordConfirm"
-              type="password"
-              placeholder="Re-enter Password"
-              required
-              inputRef={passwordConfirmRef}
-              startAdornment={
-                <InputAdornment position="start">
-                  <RiLockPasswordLine />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
 
           <div className="center signContainer wrapper">
             <Button
               disabled={loading}
-              type="submit"
               variant="contained"
-              value="register"
-              onClick={signUp}
+              value="login"
+              onClick={logIn}
             >
-              Register
+              Login
             </Button>
           </div>
+          <NavLink to="/reset">Forgot Passord?</NavLink>
         </div>
         <p className="loginQ">
-          Already have an account? <NavLink to="/login">Login Here</NavLink>
+          Don't have an account? <NavLink to="/signup">Sign Up Here</NavLink>
         </p>
+        <button onClick={logout}>Logout</button>
       </Card>
     </div>
   );
